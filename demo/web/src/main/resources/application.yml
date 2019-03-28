@@ -1,0 +1,33 @@
+spring:
+  datasource:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/test
+          username: root
+          password: 123
+          #type: com.alibaba.druid.pool.DruidDataSource
+          filters: stat
+          maxActive: 20
+          initialSize: 1
+          maxWait: 60000
+          minIdle: 1
+          timeBetweenEvictionRunsMillis: 60000
+          minEvictableIdleTimeMillis: 300000
+          validationQuery: select 'x'
+          testWhileIdle: true
+          testOnBorrow: false
+          testOnReturn: false
+          poolPreparedStatements: true
+          maxOpenPreparedStatements: 20
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.demo.domain
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+pagehelper:
+    helperDialect: sqlserver
+    reasonable: true
+    supportMethodsArguments: true
+    pageSizeZero: true
+    params: count=countSql

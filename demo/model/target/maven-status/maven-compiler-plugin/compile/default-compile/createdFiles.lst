@@ -1,1 +1,6 @@
+com\example\demo\domain\ExampleExcelEmp.class
+com\example\demo\domain\ExampleExcelEmpExample$GeneratedCriteria.class
+com\example\demo\domain\ExampleExcelEmpExample$Criteria.class
+com\example\demo\domain\ExampleExcelEmpExample.class
+com\example\demo\domain\ExampleExcelEmpExample$Criterion.class
 com\example\demo\domain\User.class

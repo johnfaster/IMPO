@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.IEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,11 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
+    @Autowired
     private final UserRepository userRepository;
-@Autowired
     private UserController(UserRepository userRepository){
     this.userRepository = userRepository;
     }
+    @Autowired
+    private IEmpService empService;
     @PostMapping("/person/save")
     public User save(@RequestParam String name){
         User user = new User();
@@ -24,5 +27,9 @@ public class UserController {
             System.out.printf("用户对象：%s保存成功！\n",user);
         }
         return user;
+    }
+    @PostMapping("/person/insert")
+    public void insert(@RequestParam String name){
+        empService.insert(name);
     }
 }
