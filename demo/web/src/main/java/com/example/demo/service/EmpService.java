@@ -19,11 +19,11 @@ public class EmpService implements  IEmpService{
     private final static AtomicInteger idGenerator = new AtomicInteger();
     @Autowired
 private ExampleExcelEmpMapper exampleExcelEmpMapper;
-    public void insert(String name){
+    public void insert(Long id,String name){
         ExampleExcelEmp emp = new ExampleExcelEmp();
-        Integer id = idGenerator.incrementAndGet();
+        //Integer id = idGenerator.incrementAndGet();
         emp.setEmpname(name);
-        emp.setEmpid(id.longValue());
+        emp.setEmpid(id);
         emp.setOrgid(id.longValue());
         emp.setEmpcode("005");
         exampleExcelEmpMapper.insert(emp);

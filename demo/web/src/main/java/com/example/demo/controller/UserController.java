@@ -28,7 +28,7 @@ public class UserController {
         return user;
     }
     @PostMapping("/person/insert")
-    public void insert(@RequestParam String name){
-        empService.insert(name);
+    public void insert(@RequestParam Long id,String name){
+        empService.insert(id,name);
     }
 }

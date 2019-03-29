@@ -5,5 +5,5 @@ import com.example.demo.mapper.ExampleExcelEmpMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public interface IEmpService {
-    public void insert(String name);
+    public void insert(Long id,String name);
 }
