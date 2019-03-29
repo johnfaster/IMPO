@@ -48,6 +48,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.example.demo.DemoApplication</mainClass>
+                    <fork>true</fork>
                 </configuration>
             </plugin>
             <plugin>

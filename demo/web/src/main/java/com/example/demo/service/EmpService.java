@@ -24,8 +24,9 @@ private ExampleExcelEmpMapper exampleExcelEmpMapper;
         //Integer id = idGenerator.incrementAndGet();
         emp.setEmpname(name);
         emp.setEmpid(id);
-        emp.setOrgid(id.longValue());
-        emp.setEmpcode("005");
+        Integer orgid = 2;
+        emp.setOrgid(orgid.longValue());
+        emp.setEmpcode("008");
         exampleExcelEmpMapper.insert(emp);
         System.out.printf("用户对象：%s保存成功！\n",emp);
     }
