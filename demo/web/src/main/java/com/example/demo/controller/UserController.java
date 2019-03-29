@@ -22,7 +22,6 @@ public class UserController {
         User user = new User();
         user.setName(name);
         userRepository.save(user);
-        System.out.println(userRepository.save(user));
         if(userRepository.save(user)){
             System.out.printf("用户对象：%s保存成功！\n",user);
         }

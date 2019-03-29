@@ -15,6 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Transactional
 public class EmpService implements  IEmpService{
     private ConcurrentMap<Integer,User> repository = new ConcurrentHashMap<>();
+    @Autowired
     private final static AtomicInteger idGenerator = new AtomicInteger();
     @Autowired
 private ExampleExcelEmpMapper exampleExcelEmpMapper;
@@ -22,13 +23,10 @@ private ExampleExcelEmpMapper exampleExcelEmpMapper;
         ExampleExcelEmp emp = new ExampleExcelEmp();
         Integer id = idGenerator.incrementAndGet();
         emp.setEmpname(name);
-      /* Integer empid = 11;
-       Long pid = empid.longValue();
-        emp.setEmpid(pid);*/
+        emp.setEmpid(id.longValue());
         emp.setOrgid(id.longValue());
         emp.setEmpcode("005");
         exampleExcelEmpMapper.insert(emp);
-        System.out.println(exampleExcelEmpMapper.insert(emp));
         System.out.printf("用户对象：%s保存成功！\n",emp);
     }
 }
