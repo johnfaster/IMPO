@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 public class UserController {
     @Autowired
@@ -30,5 +33,9 @@ public class UserController {
     @PostMapping("/person/insert")
     public void insert(@RequestParam Long id,String name){
         empService.insert(id,name);
+    }
+    @PostMapping("/person/export")
+    public void exportEmp(){
+        empService.importEmp();
     }
 }
