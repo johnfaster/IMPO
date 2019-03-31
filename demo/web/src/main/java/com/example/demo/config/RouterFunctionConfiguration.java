@@ -5,17 +5,17 @@ import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.reactive.function.server.*;
+/*import org.springframework.web.reactive.function.server.*;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Mono;*/
 
 import java.util.Collection;
 
 @Configuration
 public class RouterFunctionConfiguration {
-    @Bean
-    @Autowired
-public RouterFunction<ServerResponse> personFindAll(UserRepository userRespository){
+   /* @Bean
+    @Autowired*/
+/*public RouterFunction<ServerResponse> personFindAll(UserRepository userRespository){
     return  RouterFunctions.route(RequestPredicates.GET("/person/find/all"),
             request ->{
                 Collection<User> users = userRespository.findAll();
@@ -23,5 +23,5 @@ public RouterFunction<ServerResponse> personFindAll(UserRepository userResposito
                 Flux<User> userFlux = Flux.fromIterable(users);
                 return ServerResponse.ok().body(userFlux,User.class);
             });
-    }
+    }*/
 }

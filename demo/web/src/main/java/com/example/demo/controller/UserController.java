@@ -5,10 +5,14 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.service.IEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +28,8 @@ public class UserController {
     }
     @Autowired
     private IEmpService empService;
+    @Autowired(required=false)
+    private HttpServletResponse res;
     @PostMapping("/person/save")
     public User save(@RequestParam String name){
         User user = new User();
@@ -38,9 +44,8 @@ public class UserController {
     public void insert(@RequestParam Long id,String name){
         empService.insert(id,name);
     }
-    @PostMapping("/person/export")
+    @RequestMapping("/person/export")
     public void exportEmp(){
-
         empService.importEmp();
     }
     @PostMapping("/person/import")
@@ -69,7 +74,7 @@ public class UserController {
                 for (int j = 0;j<strs[i].length;j++){//循环二维数组第二层
                     String matnr = str[m][1];
                     if(str[m][1].equals(strs[i][0])&&(i+2)<strs.length){
-                        map =  new HashMap<String,String>();
+                        map = new HashMap<String,String>();
                         map.put("id",str[m][0]);
                         map.put("o",strs[i][j]);
                         map.put("y",strs[i+1][j]);
