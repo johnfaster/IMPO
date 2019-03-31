@@ -28,8 +28,7 @@ public class UserController {
     }
     @Autowired
     private IEmpService empService;
-    @Autowired(required=false)
-    private HttpServletResponse res;
+
     @PostMapping("/person/save")
     public User save(@RequestParam String name){
         User user = new User();
@@ -45,8 +44,8 @@ public class UserController {
         empService.insert(id,name);
     }
     @RequestMapping("/person/export")
-    public void exportEmp(){
-        empService.importEmp();
+    public void exportEmp(HttpServletResponse response){
+        empService.importEmp(response);
     }
     @PostMapping("/person/import")
     public List<Map<String,String>> importSpareInfo(){

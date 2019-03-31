@@ -42,8 +42,7 @@ private ExampleExcelEmpMapper exampleExcelEmpMapper;
         exampleExcelEmpMapper.insert(emp);
         System.out.printf("用户对象：%s保存成功！\n",emp);
     }
-    public void importEmp(){
-        HttpServletResponse response = null;
+    public void importEmp(HttpServletResponse response){
         List<ExampleExcelEmp> list =  exampleExcelEmpMapper.queryEmpList();
         export(list,response);
     }
@@ -87,11 +86,11 @@ private ExampleExcelEmpMapper exampleExcelEmpMapper;
         String fileName = "Excel-" + String.valueOf(System.currentTimeMillis()).substring(4, 13) + ".xls";
         String headStr = "attachment; filename=\"" + fileName + "\"";
         respone = response;
-        response.reset();
-        response.setHeader("Content-disposition", "attachment; filename=details.xls");
-        response.setContentType("application/msexcel");
+        respone.reset();
+        respone.setHeader("Content-disposition", "attachment; filename=details.xls");
+        respone.setContentType("application/msexcel");
         try {
-            out = new BufferedOutputStream(response.getOutputStream());
+            out = new BufferedOutputStream(respone.getOutputStream());
             workbook.write(out);
             out.flush();
         }catch (IOException e){

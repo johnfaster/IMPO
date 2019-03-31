@@ -8,5 +8,5 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface IEmpService {
     public void insert(Long id,String name);
-    public void importEmp();
+    public void importEmp(HttpServletResponse response);
 }
