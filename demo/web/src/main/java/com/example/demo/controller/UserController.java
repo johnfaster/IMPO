@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UserController {
@@ -36,6 +40,43 @@ public class UserController {
     }
     @PostMapping("/person/export")
     public void exportEmp(){
+        String[][] str = {
+                {"1","0000000000"},
+                {"2","000000001"},
+                {"3","0000000002"}
+        };
+        String[][] strs = {
+                {"0000000000","方法","放的地方","金海环境"},
+                {"11","方法","放的地方","金海环境"},
+                {"12","方法","放的地方","金海环境"},
+                {"000000001","方法","放的地方","金海环境"},
+                {"21","方法","放的地方","金海环境"},
+                {"22","方法","放的地方","金海环境"},
+                {"0000000002","方法","放的地方","金海环境"},
+                {"31","方法","放的地方","金海环境"},
+                {"32","方法","放的地方","金海环境"}
+        };
+        Long start = System.currentTimeMillis();
+         List list = new ArrayList<Map>();
+         Map map = null;
+         for (int i = 0;i<strs.length;i++){//循环二维数组第一层
+              for (int j = 0;j<strs[i].length;j++){//循环二维数组第二层
+                  for (int m = 0;m<str.length;m++){
+                      if(str[m][1].equals(strs[i][0])&&(i+2)<strs.length){
+                          map =  new HashMap<String,String>();
+                          map.put("id",str[m][0]);
+                          map.put("o",strs[i][j]);
+                          map.put("y",strs[i+1][j]);
+                          map.put("t",strs[i+2][j]);
+                          list.add(map);
+                          break;
+                      }
+                  }
+              }
+      }
+        Long end = System.currentTimeMillis();
+        Long cost = (end-start)/1000;
+        System.err.println("耗时"+cost+"====="+list.toString());
         empService.importEmp();
     }
 }
