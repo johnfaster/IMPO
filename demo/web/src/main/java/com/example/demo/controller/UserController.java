@@ -40,6 +40,11 @@ public class UserController {
     }
     @PostMapping("/person/export")
     public void exportEmp(){
+
+        empService.importEmp();
+    }
+    @PostMapping("/person/import")
+    public List<Map<String,String>> importSpareInfo(){
         String[][] str = {
                 {"1","0000000000"},
                 {"2","000000001"},
@@ -57,26 +62,26 @@ public class UserController {
                 {"32","方法","放的地方","金海环境"}
         };
         Long start = System.currentTimeMillis();
-         List list = new ArrayList<Map>();
-         Map map = null;
-         for (int i = 0;i<strs.length;i++){//循环二维数组第一层
-              for (int j = 0;j<strs[i].length;j++){//循环二维数组第二层
-                  for (int m = 0;m<str.length;m++){
-                      if(str[m][1].equals(strs[i][0])&&(i+2)<strs.length){
-                          map =  new HashMap<String,String>();
-                          map.put("id",str[m][0]);
-                          map.put("o",strs[i][j]);
-                          map.put("y",strs[i+1][j]);
-                          map.put("t",strs[i+2][j]);
-                          list.add(map);
-                          break;
-                      }
-                  }
-              }
-      }
+        List<Map<String,String>> list = new ArrayList<Map<String,String>>();
+        Map<String,String> map = null;
+        for (int m = 0;m<str.length;m++){
+            for (int i = 0;i<strs.length;i++){//循环二维数组第一层
+                for (int j = 0;j<strs[i].length;j++){//循环二维数组第二层
+                    String matnr = str[m][1];
+                    if(str[m][1].equals(strs[i][0])&&(i+2)<strs.length){
+                        map =  new HashMap<String,String>();
+                        map.put("id",str[m][0]);
+                        map.put("o",strs[i][j]);
+                        map.put("y",strs[i+1][j]);
+                        map.put("t",strs[i+2][j]);
+                        list.add(map);
+                    }
+                }
+            }
+        }
         Long end = System.currentTimeMillis();
         Long cost = (end-start)/1000;
         System.err.println("耗时"+cost+"====="+list.toString());
-        empService.importEmp();
+        return list;
     }
 }
