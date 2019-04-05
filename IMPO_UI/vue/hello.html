@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div @click="handleClick">
+            <div :title=title>{{content}}</div>
+            <input v-model="content"/>
+            <div v-text="content"></div>
+            姓:<input v-model="firstName"/>
+            名:<input v-model="lastName"/>
+            <div>{{fullname}}</div>
+            <div>{{count}}</div>
+        </div>
+    </div>
+    <div id="root1">
+        <div v-show="show">我要走了</div>
+        <button @click="handleClick">toggle</button>
+        <ul>
+            <li v-for="(item,index) of list" :key="index">{{item}}</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:"#root1",
+        data:{
+           content:"java",
+            title:"你大爷",
+            firstName:'',
+            lastName:'',
+            count:0,
+            show:true,
+            list:[1,2,3]
+        },
+        methods:{
+            handleClick:function () {
+               this.content="world";
+               this.show=!this.show;
+            }
+        },
+        computed:{
+            fullname:function () {
+                return this.firstName+this.lastName;
+            }
+        },
+        watch:{
+            fullname:function () {
+                this.count++
+            }
+        }
+    });
+    new Vue({
+        el:"#root",
+        data:{
+            content:"java",
+            title:"你大爷",
+            firstName:'',
+            lastName:'',
+            count:0,
+            show:true
+        },
+        methods:{
+            handleClick:function () {
+                this.content="world";
+                this.show=!this.show;
+            }
+        },
+        computed:{
+            fullname:function () {
+                return this.firstName+this.lastName;
+            }
+        },
+        watch:{
+            fullname:function () {
+                this.count++
+            }
+        }
+    });
+</script>
+</html>
