@@ -25,6 +25,14 @@
         <property name="password" value="${jdbc.password}"></property>
 
     </bean>
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">0</prop>
+            </props>
+        </property>
+    </bean>
 
 
 </beans>

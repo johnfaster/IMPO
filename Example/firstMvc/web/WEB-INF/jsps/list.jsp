@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
     <style type="text/css">
-        .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+        .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
             border: 1px solid #333;
         }
     </style>
@@ -24,9 +24,34 @@
         td {
             padding-left: 10px;
         }
-        caption{
+
+        caption {
             font-size: 24px;
             text-align: center;
+        }
+
+        #xx1 {
+            position: relative;
+            top: 5px;
+        }
+
+        #xx2 {
+            position: absolute;
+            left: 43%;
+            margin-top: -16px;
+        }
+
+        .line-div {
+            width: 100%;
+            height: 100%;
+            border-bottom: 1px solid #333;
+            position: relative;
+            margin-left: -9px;
+            margin-top: 15px;
+            -webkit-transform: rotate(7deg);
+            -moz-transform: rotate(5deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+
         }
     </style>
     <!--media=print 这个属性在打印时有效 有些不想打印出来的分页打印的都可以应用这类样式进行控制 在非打印时是无效的(可从打印预览中看到效果)-->
@@ -40,8 +65,9 @@
         .page {
             page-break-after: always;
         }
-        @page  {
-           size: auto;
+
+        @page {
+            size: auto;
             margin: 0mm;
         }
     </style>
@@ -51,7 +77,7 @@
         function printall() {
             //$("div[class=page]:last").removeClass("page");//最后一个分页不需要
             //window.print();
-            var lastPage= $("div[class=page]:last");
+            var lastPage = $("div[class=page]:last");
             lastPage.removeClass("page");//最后一个打印分页不需要，浪费纸张
             window.print();
             lastPage.addClass("page");//批量打印后再恢复打印分页，防止重复打印分页失效
@@ -60,10 +86,10 @@
         function displayTable(id) {
 
             if ($("#t" + id).prop("checked")) { //验证按钮是否点击
-                $("#t" + id + "_table").css("display","");//显示table
+                $("#t" + id + "_table").css("display", "");//显示table
                 $("#t" + id + "_print").addClass("page"); // 追加分页样式
             } else {
-                $("#t" + id + "_table").css("display","none");//隐藏table
+                $("#t" + id + "_table").css("display", "none");//隐藏table
                 $("#t" + id + "_print").removeClass("page"); //移除分页样式
             }
 
@@ -73,27 +99,30 @@
     </script>
 </head>
 <body>
-    <div class="page">
-        ${info}
-    </div>
-    <button type="button" class="btn btn-primary noPrint" style="text-align: center"
+<div class="page">
+    ${info}
+</div>
+<div>
+    <button type="button" class="btn btn-primary noPrint" style="position: absolute;left: 50%"
             onclick="printall()">
         打印
     </button>
+</div>
 <script type="text/javascript">
-    if($("input[name='isOriginal']").val()=="是"){
+    if ($("input[name='isOriginal']").val() == "是") {
         console.log($("input[name='isOriginal']").val());
         $(".ywx").show();
-        $("#sfywx1").attr("checked","checked")
-    }else{
+        $("#sfywx1").attr("checked", "checked")
+    } else {
         $(".ywx").hide();
-        $("#sfywx2").attr("checked","checked");
+        $("#sfywx2").attr("checked", "checked");
     }
+
     function shifou() {
         var isywx = $("input[name='isOriginal1']:checked").val();
-        if(isywx=="是"){
+        if (isywx == "是") {
             $(".ywx").show();
-        }else{
+        } else {
             $(".ywx").hide();
         }
     }

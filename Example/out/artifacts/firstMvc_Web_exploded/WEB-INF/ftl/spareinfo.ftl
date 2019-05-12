@@ -20,11 +20,13 @@
                     </tr>
                     <tr>
                         <!-- 【bigClass】大类,判断大类是否有值来控制列数的展示 【bigClass??】用于判断是否空值-->
-                    <#if bigClass??  &&  bigClass != ""  >
-                        <td style="width: 25%" class="td1" colspan="2"><img src="img/u374.png"></td>
-                    <#else>
-                        <td style="width: 25%" class="td1" ><img src="img/u374.png">i</td>
-                    </#if>
+                    <td colspan="2">
+                        <div class="out">
+                            <div id="xx2">项目</div>
+                            <div class="line-div"></div>
+                            <div id="xx1">信息</div>
+                        </div>
+                    </td>
                         <td style="width: 25%" class="td1">原始物项</td>
                         <td style="width: 25%; " class="ywx">原物项</td>
                         <td style="width: 25%" class="td1 twx">替代物项</td>
