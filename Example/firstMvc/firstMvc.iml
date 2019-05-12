@@ -16,6 +16,7 @@
       <configuration>
         <fileset id="fileset" name="Spring" removed="false">
           <file>file://$MODULE_DIR$/web/WEB-INF/spring.xml</file>
+          <file>file://$MODULE_DIR$/web/WEB-INF/generatorConfig.xml</file>
         </fileset>
       </configuration>
     </facet>
